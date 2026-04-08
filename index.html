@@ -877,6 +877,14 @@
         // window.location.href = 'portfolio.html';
       }
     }, 1000);
+
+    document.addEventListener('keyup', (e) => {
+    if (e.key === 'PrintScreen') {
+        // Salin teks kosong ke clipboard biar hasil screenshot gak bisa dipaste
+        navigator.clipboard.writeText('');
+        alert('Screenshot dilarang di sistem ini!');
+    }
+});
   </script>
 </body>
 </html>
