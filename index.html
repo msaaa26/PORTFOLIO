@@ -946,7 +946,7 @@
             const timer = setInterval(() => {
                 current += step;
                 if (current >= target) { current = target; clearInterval(timer); }
-                el.textContent = current + (target >= 99 ? '+' : '');
+                el.textContent = current + (target >= 5 ? '+' : '');
             }, 30);
         }
         const countObs = new IntersectionObserver(entries => {
