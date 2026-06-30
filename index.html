@@ -140,7 +140,7 @@
 
         .hero-title {
             font-family: var(--font-display);
-            font-size: clamp(54px, 8vw, 100px);
+            font-size: clamp(37px, 8vw, 100px);
             font-weight: 800;
             line-height: 0.92;
             letter-spacing: -3px;
@@ -153,24 +153,27 @@
             color: var(--accent);
         }
 
-        .hero-title em {
+        .hero-title p {
             font-style: normal;
             color: var(--muted);
-            font-size: 0.59em;
-            letter-spacing: -1px;
+            font-size: clamp(20px, 4vw, 40px);
+            letter-spacing: 1px;
+            margin-top: 17px;
+            line-height: 1.1;
         }
 
         .hero-sub {
-            margin-top: 40px;
+            margin-top: 20px;
             max-width: 480px;
             color: var(--muted);
             line-height: 1.8;
             opacity: 0;
             animation: fadeUp 0.7s 0.6s forwards;
+            font-size: clamp(10px, 1.5vw, 16px);
         }
 
         .hero-cta {
-            margin-top: 48px;
+            margin-top: 30px;
             display: flex;
             gap: 16px;
             opacity: 0;
@@ -181,7 +184,7 @@
             display: inline-block;
             padding: 14px 28px;
             font-family: var(--font-mono);
-            font-size: 12px;
+            font-size: clamp(7px, 1.2vw, 12px);
             letter-spacing: 0.1em;
             text-transform: uppercase;
             text-decoration: none;
@@ -302,6 +305,7 @@
         .about-body {
             color: var(--muted);
             line-height: 1.9;
+            font-size: clamp(11px, 1.5vw, 14px);
         }
 
         .about-body p+p {
@@ -322,18 +326,18 @@
 
         .stat-num {
             font-family: var(--font-display);
-            font-size: 40px;
+            font-size: clamp(32px, 4vw, 52px);
             font-weight: 800;
             color: var(--accent);
             line-height: 1;
         }
 
         .stat-label {
-            font-size: 11px;
+            font-size: clamp(10px, 1.5vw, 12px);
             color: var(--muted);
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            margin-top: 4px;
+            margin-top: 7px;
         }
 
         /* SKILLS */
@@ -355,6 +359,33 @@
             transition: border-color 0.2s, transform 0.2s;
             position: relative;
             overflow: hidden;
+        }
+
+        .skill-badge {
+            position: absolute;
+            top: 12px;
+            /* Jarak dari atas card */
+            right: 12px;
+            /* Jarak dari kanan card (ubah ke 'left' kalau mau di kiri) */
+
+            font-size: 10px;
+            /* Ukuran teks kecil khas badge tech */
+            font-family: monospace;
+            /* Sesuai font portofolio lo */
+            text-transform: uppercase;
+            font-weight: bold;
+
+            /* Tema Hijau Stabilo / Lime (Ganti HEX nya kalau mau warna lain) */
+            color: #A3E635;
+            background-color: rgba(163, 230, 53, 0.1);
+            /* Background transparan tipis */
+            border: 1px solid #A3E635;
+
+            padding: 4px 8px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            pointer-events: none;
+            /* Biar kalau di-klik gak ngeganggu card-nya */
         }
 
         .skill-card::before {
@@ -471,6 +502,450 @@
         .project-arrow {
             font-size: 20px;
             transition: transform 0.2s, color 0.2s;
+        }
+
+        /* TESTIMONIALS */
+        #testimonials {
+            background-color: #0d0d0d;
+            padding: 100px 0 100px 8%;
+            /* Kasih padding kiri biar sejajar konten atas lo */
+            overflow: hidden;
+            color: #fff;
+            font-family: monospace;
+            /* Biar match sama font utama lo */
+        }
+
+        .testimonials-container {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        /* Sisi Kiri */
+        .testimonials-left {
+            flex: 0 0 300px;
+            position: sticky;
+            top: 100px;
+        }
+
+
+
+        .testimonials-heading {
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: #ffffff;
+            font-family: var(--font-display);
+        }
+
+        /* Navigasi & Indikator (Sesuai Gambar Referensi) */
+        .slider-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid #333;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            border-color: #A3E635;
+            color: #A3E635;
+        }
+
+        .nav-indicator {
+            width: 80px;
+            height: 2px;
+            background: #333;
+            position: relative;
+        }
+
+        .nav-progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 33.3%;
+            /* Sesuai jumlah slide */
+            background: #A3E635;
+            transition: left 0.3s ease;
+        }
+
+        /* Sisi Kanan (Track Slider) */
+        .testimonials-right {
+            flex: 1;
+            cursor: grab;
+        }
+
+        .testimonials-right:active {
+            cursor: grabbing;
+        }
+
+        .testimonial-track {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+        }
+
+        /* Card Testimoni Gaya Pop-out Tech */
+        .testimonial-card {
+            flex: 0 0 350px;
+            /* Lebar card pas */
+            background: #141414;
+            border: 1px solid #222;
+            padding: 30px;
+            border-radius: 12px;
+            transition: border-color 0.3s;
+        }
+
+        .testimonial-card:hover {
+            border-color: #A3E635;
+        }
+
+        .review-box p {
+            font-size: clamp(12px, 1.5vw, 14px);
+            line-height: 1.6;
+            color: #b3b3b3;
+            margin-bottom: 15px;
+        }
+
+        .review-stars {
+            color: #A3E635;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        /* Info User */
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .reviewer-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #222;
+            border: 1px solid #333;
+        }
+
+        .reviewer-details {
+            display: flex;
+            flex-content: column;
+            align-items: center;
+            gap: calc(0px);
+            /* background-color: red; */
+            width: 100%;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+            font-size: 14px;
+            color: #fff;
+            /* background-color: pink; */
+            width: auto;
+        }
+
+        .reviewer-country {
+            font-size: clamp(10px, 1.5vw, 12px);
+            color: #666;
+            font-family: var(--font-mono);
+        }
+
+        .review-date {
+            font-size: clamp(10px, 1.5vw, 12px);
+            color: #666;
+            /* background-color: green; */
+            margin-left: auto;
+        }
+
+        /* BREAKPOINT RESPONSIF */
+        @media (max-width: 900px) {
+            #testimonials {
+                padding: 60px 5%;
+            }
+
+            .testimonials-container {
+                flex-direction: column;
+            }
+
+            .testimonials-left {
+                flex: none;
+                width: 100%;
+                position: static;
+                margin-bottom: 30px;
+            }
+
+            .testimonial-card {
+                flex: 0 0 280px;
+                /* Ukuran pas di HP */
+            }
+        }
+
+        /* --- ANIMASI REVEAL PAS SCROLL / REFRESH --- */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: opacity, transform;
+        }
+
+        /* Class aktif yang dipicu oleh JavaScript */
+        .reveal-element.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efek Staggered (Bergantian) Khusus untuk Card Testimoni */
+        .testimonial-card:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .testimonial-card:nth-child(2) {
+            transition-delay: 0.25s;
+        }
+
+        .testimonial-card:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+
+        /* --- EXPERIENCE SECTION --- */
+        #work-experience {
+            /* background-color: #0d0d0d; */
+            padding: 100px 8%;
+            color: #ffffff;
+            font-family: monospace;
+            /* Konsisten dengan font code lo */
+        }
+
+        .experience-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .experience-header {
+            margin-bottom: 60px;
+        }
+
+        .experience-heading {
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: bold;
+            color: #ffffff;
+            margin-top: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        /* Timeline Layout */
+        .experience-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .experience-item {
+            display: flex;
+            gap: 25px;
+            background: #141414;
+            /* Card agak terang dikit dari background utama */
+            border: 1px solid #222;
+            padding: 40px;
+            border-radius: 12px;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .experience-item:hover {
+            border-color: #A3E635;
+            /* Efek highlight hijau stabilo pas di-hover */
+        }
+
+        /* Sisi Kiri: Logo Zone */
+        .exp-logo-zone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .exp-logo-box {
+            width: 56px;
+            height: 56px;
+            background-image: url(https://media.licdn.com/dms/image/v2/D4D0BAQHCL_okzG8nKA/company-logo_100_100/company-logo_100_100/0/1687231239697?e=1784160000&v=beta&t=dmCtQsnjTOOApXNICtijv-PGO8TH69F6u84KaEoKecI);
+            background-size: cover;
+            background-position: center;
+            /* Sesuai warna dasar logo di gambar LinkedIn lo */
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #333;
+        }
+
+        .exp-logo-box-1 {
+            width: 56px;
+            height: 56px;
+            background-image: url(LOGOARC.png);
+            background-size: cover;
+            background-position: center;
+            /* Sesuai warna dasar logo di gambar LinkedIn lo */
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #333;
+        }
+
+        .logo-fallback {
+            font-weight: bold;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        /* Sisi Kanan: Konten */
+        .exp-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .exp-meta-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .exp-role {
+            font-size: clamp(16px, 2vw, 20px);
+            font-weight: bold;
+            color: #ffffff;
+            font-family: var(--font-display);
+        }
+
+        .exp-duration {
+            font-size: clamp(12px, 1.5vw, 14px);
+            color: #888888;
+        }
+
+        .exp-company-location {
+            font-size: 14px;
+            color: #b3b3b3;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .company-name {
+            color: #A3E635;
+            font-size: clamp(14px, 1.5vw, 16px);
+            /* Menonjolkan nama instansi perusahaan */
+        }
+
+        .bullet-sep {
+            color: #444;
+            font-size: clamp(12px, 1.5vw, 14px);
+        }
+
+        .exp-location {
+            color: #666666;
+            font-size: clamp(12px, 1.5vw, 14px);
+        }
+
+        /* Poin Deskripsi Tugas */
+        .exp-bullets {
+            margin-top: 15px;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .exp-bullets li {
+            font-size: clamp(12px, 1.5vw, 14px);
+            color: #cccccc;
+            line-height: 1.6;
+            list-style-type: square;
+            /* Kotak-kotak kecil biar kerasa nuansa tech */
+        }
+
+        .exp-bullets li::marker {
+            color: #A3E635;
+            /* List marker diwarnai hijau stabilo */
+        }
+
+        /* RESPONSIVE BREAKPOINT */
+        @media (max-width: 768px) {
+            .experience-item {
+                flex-direction: column;
+                padding: 25px;
+                gap: 15px;
+            }
+
+            .exp-logo-zone {
+                align-items: flex-start;
+            }
+
+            .exp-meta-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
+        .exp-action {
+            margin-top: 25px;
+            /* Kasih jarak dari poin terakhir */
+        }
+
+        .btn-doc {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid #333;
+            /* Border awal kalem abu-abu gelap */
+            color: #cccccc;
+            text-decoration: none;
+            font-size: 13px;
+            font-family: monospace;
+            border-radius: 6px;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            width: fit-content;
+        }
+
+        /* Efek pas disorot mouse */
+        .btn-doc:hover {
+            border-color: #A3E635;
+            /* Nyala hijau stabilo */
+            color: #A3E635;
+            background: rgba(163, 230, 53, 0.03);
+            /* Glow tipis di background */
+        }
+
+        .btn-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        /* Efek panahnya agak geser ke kanan pas di-hover */
+        .btn-doc:hover .btn-arrow {
+            transform: translateX(4px);
         }
 
         /* CONTACT */
@@ -610,17 +1085,19 @@
 </head>
 
 <body>
-<div>
+    <!-- <div>
     <p>On Deploy</p>
-</div>
-    <!-- <div id="cursor"></div> -->
+</div> -->
+    <div id="cursor"></div>
 
-    <!-- <nav>
+    <nav>
         <div class="nav-logo">MI.</div>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#work-experience">Work Experience</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
@@ -631,7 +1108,7 @@
         <h1 class="hero-title">
             Muhammad<br>
             <span>Isa</span><br>
-            <em>— Developer</em>
+            <p>— Developer & Designer</p>
         </h1>
         <p class="hero-sub">
             I Specialist in creating aesthetic, functional, and scalable digital solutions. Focused on precision end
@@ -639,7 +1116,7 @@
             and user satisfaction.
         </p>
         <div class="hero-cta">
-            <a href="#projects" class="btn">See My Work</a>
+            <a href="#projects" class="btn">See My Projects</a>
             <a href="#contact" class="btn ghost">Get In Touch</a>
         </div>
         <div class="hero-scroll">Scroll</div>
@@ -652,16 +1129,16 @@
                 <h2 class="about-title reveal">Crafting<br>digital<br><span>experiences.</span></h2>
                 <div class="stats reveal">
                     <div class="stat-item">
-                        <div class="stat-num" data-count="5">0</div>
+                        <div class="stat-num" data-count="6">0</div>
                         <div class="stat-label">Projects Done</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-num" data-count="3">0</div>
-                        <div class="stat-label">Years Experience</div>
+                        <div class="stat-num" data-count="1">0</div>
+                        <div class="stat-label">Years of coding experience</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-num" data-count="8">0</div>
-                        <div class="stat-label">Projects</div>
+                        <div class="stat-num" data-count="10">0</div>
+                        <div class="stat-label">Total Projects</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-num" data-count="2">0</div>
@@ -670,18 +1147,20 @@
                 </div>
             </div>
             <div class="about-body reveal">
-                <p>Hi! I'm a developer based in Indonesia, passionate about building and design web experiences that are
-                    fast,
-                    accessible, and visually sharp.</p>
-                <p>I enjoy working across the front end dev — from crafting pixel-perfect interfaces to wiring up robust
-                    backend
-                    systems. I care deeply about the details others might overlook.</p>
-                <p>
-                    I also had experience as an intern in the IT support field for 6 months.
-                </p>
-                <p>When I'm not coding, you'll find me exploring new tech, playing games, or probably drinking too much
-                    coffee.
-                    ☕</p>
+                <p>I am a vocational high school graduate with a major in Software Engineering, specializing in
+                    combining code functionality with visual appeal. With a strong foundation in software development, I
+                    have delved into the fields of front-end development and UI/UX design to create digital solutions
+                    that are not only system-stable but also aesthetically pleasing and intuitive for users.</p>
+                <p>My industry experience was strengthened through an internship as an IT Support Specialist at <a
+                        href="https://wisesa-consulting.com/about"
+                        style="text-decoration: underline; text-decoration-color: #c8f135; color: #c8f135;">PT. Wisesa
+                        Consulting Indonesia</a>. There, I was responsible for troubleshooting hardware and software
+                    issues and ensuring the smooth operation of the company’s technology infrastructure. This role
+                    successfully honed my problem-solving and professional communication skills in a real-world work
+                    environment.</p>
+                <p>As a graduate with a passion for development and design, I stay up-to-date with the latest trends in
+                    technology and modern design. I’m ready to contribute to a team to build innovative digital projects
+                    with clean code that deliver a memorable user experience.</p>
             </div>
         </div>
     </section>
@@ -690,9 +1169,29 @@
         <div class="section-label">What I Do</div>
         <div class="skills-grid">
             <div class="skill-card reveal">
+                <div class="skill-badge">Specialty</div>
                 <div class="skill-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon-1"
-                        viewBox="0 0 640 640">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon-1" viewBox="0 0 640 640">
+                        <path
+                            d="M576 320C576 320.9 576 321.8 576 322.7C575.6 359.2 542.4 384 505.9 384L408 384C381.5 384 360 405.5 360 432C360 435.4 360.4 438.7 361 441.9C363.1 452.1 367.5 461.9 371.8 471.8C377.9 485.6 383.9 499.3 383.9 513.8C383.9 545.6 362.3 574.5 330.5 575.8C327 575.9 323.5 576 319.9 576C178.5 576 63.9 461.4 63.9 320C63.9 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320zM192 352C192 334.3 177.7 320 160 320C142.3 320 128 334.3 128 352C128 369.7 142.3 384 160 384C177.7 384 192 369.7 192 352zM192 256C209.7 256 224 241.7 224 224C224 206.3 209.7 192 192 192C174.3 192 160 206.3 160 224C160 241.7 174.3 256 192 256zM352 160C352 142.3 337.7 128 320 128C302.3 128 288 142.3 288 160C288 177.7 302.3 192 320 192C337.7 192 352 177.7 352 160zM448 256C465.7 256 480 241.7 480 224C480 206.3 465.7 192 448 192C430.3 192 416 206.3 416 224C416 241.7 430.3 256 448 256z" />
+                    </svg>
+                </div>
+                <div class="skill-name">UI/UX Design</div>
+                <div class="skill-desc">Interfaces that look great and make sense — aesthetics meets usability.</div>
+                <div class="skill-tags">
+                    <span class="tag">Figma</span>
+                    <span class="tag">Prototyping</span>
+                    <span class="tag">Game design</span>
+                    <span class="tag">Canva</span>
+                    <span class="tag">Wireframe</span>
+                    <span class="tag">App UI/UX</span>
+                    <span class="tag">Web design</span>
+                </div>
+            </div>
+            <div class="skill-card reveal" style="transition-delay:0.2s">
+
+                <div class="skill-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon-1" viewBox="0 0 640 640">
                         <path
                             d="M434.8 54.1C446.7 62.7 451.1 78.3 445.7 91.9L367.3 288L512 288C525.5 288 537.5 296.4 542.1 309.1C546.7 321.8 542.8 336 532.5 344.6L244.5 584.6C233.2 594 217.1 594.5 205.2 585.9C193.3 577.3 188.9 561.7 194.3 548.1L272.7 352L128 352C114.5 352 102.5 343.6 97.9 330.9C93.3 318.2 97.2 304 107.5 295.4L395.5 55.4C406.8 46 422.9 45.5 434.8 54.1z" />
                     </svg>
@@ -708,9 +1207,9 @@
                 </div>
             </div>
             <div class="skill-card reveal" style="transition-delay:0.1s">
+
                 <div class="skill-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon-1"
-                        viewBox="0 0 640 640">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon-1" viewBox="0 0 640 640">
                         <path
                             d="M415.9 274.5C428.1 271.2 440.9 277 446.4 288.3L465 325.9C475.3 327.3 485.4 330.1 494.9 334L529.9 310.7C540.4 303.7 554.3 305.1 563.2 314L582.4 333.2C591.3 342.1 592.7 356.1 585.7 366.5L562.4 401.4C564.3 406.1 566 411 567.4 416.1C568.8 421.2 569.7 426.2 570.4 431.3L608.1 449.9C619.4 455.5 625.2 468.3 621.9 480.4L614.9 506.6C611.6 518.7 600.3 526.9 587.7 526.1L545.7 523.4C539.4 531.5 532.1 539 523.8 545.4L526.5 587.3C527.3 599.9 519.1 611.3 507 614.5L480.8 621.5C468.6 624.8 455.9 619 450.3 607.7L431.7 570.1C421.4 568.7 411.3 565.9 401.8 562L366.8 585.3C356.3 592.3 342.4 590.9 333.5 582L314.3 562.8C305.4 553.9 304 540 311 529.5L334.3 494.5C332.4 489.8 330.7 484.9 329.3 479.8C327.9 474.7 327 469.6 326.3 464.6L288.6 446C277.3 440.4 271.6 427.6 274.8 415.5L281.8 389.3C285.1 377.2 296.4 369 309 369.8L350.9 372.5C357.2 364.4 364.5 356.9 372.8 350.5L370.1 308.7C369.3 296.1 377.5 284.7 389.6 281.5L415.8 274.5zM448.4 404C424.1 404 404.4 423.7 404.5 448.1C404.5 472.4 424.2 492 448.5 492C472.8 492 492.5 472.3 492.5 448C492.4 423.6 472.7 404 448.4 404zM224.9 18.5L251.1 25.5C263.2 28.8 271.4 40.2 270.6 52.7L267.9 94.5C276.2 100.9 283.5 108.3 289.8 116.5L331.8 113.8C344.3 113 355.7 121.2 359 133.3L366 159.5C369.2 171.6 363.5 184.4 352.2 190L314.5 208.6C313.8 213.7 312.8 218.8 311.5 223.8C310.2 228.8 308.4 233.8 306.5 238.5L329.8 273.5C336.8 284 335.4 297.9 326.5 306.8L307.3 326C298.4 334.9 284.5 336.3 274 329.3L239 306C229.5 309.9 219.4 312.7 209.1 314.1L190.5 351.7C184.9 363 172.1 368.7 160 365.5L133.8 358.5C121.6 355.2 113.5 343.8 114.3 331.3L117 289.4C108.7 283 101.4 275.6 95.1 267.4L53.1 270.1C40.6 270.9 29.2 262.7 25.9 250.6L18.9 224.4C15.7 212.3 21.4 199.5 32.7 193.9L70.4 175.3C71.1 170.2 72.1 165.2 73.4 160.1C74.8 155 76.4 150.1 78.4 145.4L55.1 110.5C48.1 100 49.5 86.1 58.4 77.2L77.6 58C86.5 49.1 100.4 47.7 110.9 54.7L145.9 78C155.4 74.1 165.5 71.3 175.8 69.9L194.4 32.3C200 21 212.7 15.3 224.9 18.5zM192.4 148C168.1 148 148.4 167.7 148.4 192C148.4 216.3 168.1 236 192.4 236C216.7 236 236.4 216.3 236.4 192C236.4 167.7 216.7 148 192.4 148z" />
                     </svg>
@@ -728,27 +1227,9 @@
                 </div>
             </div>
             <div class="skill-card reveal" style="transition-delay:0.2s">
+                <div class="skill-badge">Industry Experience</div>
                 <div class="skill-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon-1"
-                        viewBox="0 0 640 640">
-                        <path
-                            d="M576 320C576 320.9 576 321.8 576 322.7C575.6 359.2 542.4 384 505.9 384L408 384C381.5 384 360 405.5 360 432C360 435.4 360.4 438.7 361 441.9C363.1 452.1 367.5 461.9 371.8 471.8C377.9 485.6 383.9 499.3 383.9 513.8C383.9 545.6 362.3 574.5 330.5 575.8C327 575.9 323.5 576 319.9 576C178.5 576 63.9 461.4 63.9 320C63.9 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320zM192 352C192 334.3 177.7 320 160 320C142.3 320 128 334.3 128 352C128 369.7 142.3 384 160 384C177.7 384 192 369.7 192 352zM192 256C209.7 256 224 241.7 224 224C224 206.3 209.7 192 192 192C174.3 192 160 206.3 160 224C160 241.7 174.3 256 192 256zM352 160C352 142.3 337.7 128 320 128C302.3 128 288 142.3 288 160C288 177.7 302.3 192 320 192C337.7 192 352 177.7 352 160zM448 256C465.7 256 480 241.7 480 224C480 206.3 465.7 192 448 192C430.3 192 416 206.3 416 224C416 241.7 430.3 256 448 256z" />
-                    </svg>
-                </div>
-                <div class="skill-name">UI/UX Design</div>
-                <div class="skill-desc">Interfaces that look great and make sense — aesthetics meets usability.</div>
-                <div class="skill-tags">
-                    <span class="tag">Figma</span>
-                    <span class="tag">Prototyping</span>
-                    <span class="tag">Game design</span>
-                    <span class="tag">Canva</span>
-                    <span class="tag">Wireframe</span>
-                </div>
-            </div>
-            <div class="skill-card reveal" style="transition-delay:0.2s">
-                <div class="skill-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon-1"
-                        viewBox="0 0 640 640">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon-1" viewBox="0 0 640 640">
                         <path
                             d="M256.5 72C322.8 72 376.5 125.7 376.5 192C376.5 258.3 322.8 312 256.5 312C190.2 312 136.5 258.3 136.5 192C136.5 125.7 190.2 72 256.5 72zM226.7 368L286.1 368L287.6 368C274.7 394.8 279.8 426.2 299.1 447.5C278.9 469.8 274.3 503.3 289.7 530.9L312.2 571.3C313.1 572.9 314.1 574.5 315.1 576L78.1 576C61.7 576 48.4 562.7 48.4 546.3C48.4 447.8 128.2 368 226.7 368zM432.6 311.6C432.6 298.3 443.3 287.6 456.6 287.6L504.6 287.6C517.9 287.6 528.6 298.3 528.6 311.6L528.6 317.7C528.6 336.6 552.7 350.5 569.1 341.1L574.1 338.2C585.7 331.5 600.6 335.6 607.1 347.3L629.5 387.5C635.7 398.7 632.1 412.7 621.3 419.5L616.6 422.4C600.4 432.5 600.4 462.3 616.6 472.5L621.2 475.4C632 482.2 635.7 496.2 629.5 507.4L607 547.8C600.5 559.5 585.6 563.7 574 556.9L569.1 554C552.7 544.5 528.6 558.5 528.6 577.4L528.6 583.5C528.6 596.8 517.9 607.5 504.6 607.5L456.6 607.5C443.3 607.5 432.6 596.8 432.6 583.5L432.6 577.6C432.6 558.6 408.4 544.6 391.9 554.1L387.1 556.9C375.5 563.6 360.7 559.5 354.1 547.8L331.5 507.4C325.3 496.2 328.9 482.1 339.8 475.3L344.2 472.6C360.5 462.5 360.5 432.5 344.2 422.4L339.7 419.6C328.8 412.8 325.2 398.7 331.4 387.5L353.9 347.2C360.4 335.5 375.3 331.4 386.8 338.1L391.6 340.9C408.1 350.4 432.3 336.4 432.3 317.4L432.3 311.5zM532.5 447.8C532.5 419.1 509.2 395.8 480.5 395.8C451.8 395.8 428.5 419.1 428.5 447.8C428.5 476.5 451.8 499.8 480.5 499.8C509.2 499.8 532.5 476.5 532.5 447.8z" />
                     </svg>
@@ -789,7 +1270,7 @@
             <a href="#" class="project-item reveal" style="transition-delay:0.1s">
                 <div class="project-num">02 —</div>
                 <div>
-                    <div class="project-name">Graduate Student Website</div>
+                    <div class="project-name">Graduate Student Website - PHP Native</div>
                     <div class="project-meta" style="color: var(--accent);">Web · 2023</div>
                     <div class="project-meta">
                         A website designed for a graduate student to showcase their academic achievements, and
@@ -804,7 +1285,7 @@
                 class="project-item reveal" style="transition-delay:0.2s">
                 <div class="project-num">03 —</div>
                 <div>
-                    <div class="project-name">Bike Shop Website UI/UX</div>
+                    <div class="project-name">UI/UX Bike Shop Website</div>
                     <div class="project-meta" style="color: var(--accent);">UI/UX · 2026</div>
                     <div class="project-meta">
                         A UI/UX design project for a bike shop website, created using Figma. The design focuses on
@@ -821,7 +1302,7 @@
                 <div class="project-num">04 —</div>
                 <div>
                     <div class="project-name">Cute Game UI Design</div>
-                    <div class="project-meta" style="color: var(--accent);">UI · 2026</div>
+                    <div class="project-meta" style="color: var(--accent);">Game UI · 2026</div>
                     <div class="project-meta">
                         A cute game UI design project created using Figma, featuring a playful and colorful interface.
                         The design
@@ -832,11 +1313,10 @@
                 </div>
                 <div class="project-arrow">→</div>
             </a>
-            <a href=""
-                class="project-item reveal" style="transition-delay:0.3s">
+            <a href="" class="project-item reveal" style="transition-delay:0.3s">
                 <div class="project-num">05 —</div>
                 <div>
-                    <div class="project-name">Ujian Exampro App</div>
+                    <div class="project-name">Ujian Exampro App - Laravel Project</div>
                     <div class="project-meta" style="color: var(--accent);">Web · 2026 |
                         <span style="
     display: inline-block; 
@@ -864,22 +1344,8 @@
                 </div>
                 <div class="project-arrow">→</div>
             </a>
-            <a href="https://www.figma.com/proto/yB3wPFT6xJiKwG7kpXSr6t/✨-April-Design-Challenge-is-Hereeee?node-id=32-676&viewport=40%2C260%2C0.13&t=BMhOzqMSrdtVfIA3-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=32%3A676&page-id=32%3A181&show-proto-sidebar=1"
-                class="project-item reveal" style="transition-delay:0.3s">
+            <a href="" class="project-item reveal" style="transition-delay:0.3s">
                 <div class="project-num">06 —</div>
-                <div>
-                    <div class="project-name">Genshin Impact In-Game Menu Redesign</div>
-                    <div class="project-meta" style="color: var(--accent);">Game UI · 2026
-                    </div>
-                    <div class="project-meta" style="margin-top: 10px;">
-                        I’m sharing my redesign concept for the Genshin Impact in-game menu. My goal was to transform the crowded default interface into a more breathable, aesthetic, and user-centric experience while staying true to the game's core identity.
-                    </div>
-                </div>
-                <div class="project-arrow">→</div>
-            </a>
-            <a href=""
-                class="project-item reveal" style="transition-delay:0.3s">
-                <div class="project-num">07 —</div>
                 <div>
                     <div class="project-name">Campaign Strip - Arc Spirits Game</div>
                     <div class="project-meta" style="color: var(--accent);">Game UI · 2026 |
@@ -898,12 +1364,361 @@
                         </span>
                     </div>
                     <div class="project-meta" style="margin-top: 10px;">
-                        Creating a game information banner for Kickstarter with a minimalist yet elegant design, as requested by the client.
+                        Created an informational game banner for Kickstarter with a minimalist, cozy design that still
+                        captures the game’s theme, as requested by the client. Also created several logo variations
+                        suitable for the game, as well as design layouts for the character showcase, brand kit, box
+                        cover (product design), rulebook, and player mat.
+                    </div>
+                </div>
+                <div class="project-arrow">→</div>
+            </a>
+            <a href="https://www.figma.com/design/b2Mbusdezrue49IXB8xeXv/%F0%9F%AA%BB-May-design-challenge?node-id=5-104&t=gx79VY9OitHCVMYw-1"
+                class="project-item reveal" style="transition-delay:0.3s">
+                <div class="project-num">07 —</div>
+                <div>
+                    <div class="project-name">Redesign Uxcel Menu - Design Challenge</div>
+                    <div class="project-meta" style="color: var(--accent);">Game UI Education · 2026
+                        <!-- <span style="
+    display: inline-block; 
+    padding: 2px 10px; 
+    font-size: 11px; 
+    font-weight: 700; 
+    color: #000000; 
+    background-color: var(--accent); 
+    border-radius: 50px; 
+    text-transform: uppercase;
+    line-height: 1.5;
+">
+                            Coming Soon
+                        </span> -->
+                    </div>
+                    <div class="project-meta" style="margin-top: 10px;">
+                        Redesign the 2 UI screens of the Stage/Progress Map and Game Details screens into a gamified
+                        app, with a more fun and engaging design, while still maintaining the original functionality and
+                        usability of the app. The goal is to create a more enjoyable user experience for users of the
+                        Uxcel app.
+                    </div>
+                </div>
+                <div class="project-arrow">→</div>
+            </a>
+            <a href="" class="project-item reveal" style="transition-delay:0.3s">
+                <div class="project-num">08 —</div>
+                <div>
+                    <div class="project-name">Customer Portfolio Redesign</div>
+                    <div class="project-meta" style="color: var(--accent);">Web Design · 2026
+                        <!-- <span style="
+    display: inline-block; 
+    padding: 2px 10px; 
+    font-size: 11px; 
+    font-weight: 700; 
+    color: #000000; 
+    background-color: var(--accent); 
+    border-radius: 50px; 
+    text-transform: uppercase;
+    line-height: 1.5;
+">
+                            Coming Soon
+                        </span> -->
+                    </div>
+                    <div class="project-meta" style="margin-top: 10px;">
+                        Create a simple redesign with an informative yet clean design for the client's portfolio, with a
+                        focus on showcasing the client's work and skills in a visually appealing way. The design should
+                        be easy to navigate and provide a clear understanding of the client's capabilities and
+                        experience.
+                    </div>
+                </div>
+                <div class="project-arrow">→</div>
+            </a>
+            <a href="https://www.instagram.com/p/DNsGqKK5BH2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                class="project-item reveal" style="transition-delay:0.3s">
+                <div class="project-num">09 —</div>
+                <div>
+                    <div class="project-name">Castorice Form Honkai Star Rail - Poster Design</div>
+                    <div class="project-meta" style="color: var(--accent);">Graphic Design · 2026
+                        <!-- <span style="
+    display: inline-block; 
+    padding: 2px 10px; 
+    font-size: 11px; 
+    font-weight: 700; 
+    color: #000000; 
+    background-color: var(--accent); 
+    border-radius: 50px; 
+    text-transform: uppercase;
+    line-height: 1.5;
+">
+                            Coming Soon
+                        </span> -->
+                    </div>
+                    <div class="project-meta" style="margin-top: 10px;">
+                        Create a poster design for the Castorice Form of the game Honkai Star Rail, with a focus on
+                        showcasing the character's unique abilities and personality. The design should be visually
+                        striking and capture the essence of the character, while also being informative and easy to
+                        read.
+                    </div>
+                </div>
+                <div class="project-arrow">→</div>
+            </a>
+            <a href="https://www.figma.com/design/pbidrm8vUpLDbScMx3sN6a/BeeHub---Music-App?node-id=0-1&t=ahNSPKbb46Fflsna-1"
+                class="project-item reveal" style="transition-delay:0.3s">
+                <div class="project-num">10 —</div>
+                <div>
+                    <div class="project-name">BeeHub - Music App UI/UX Design</div>
+                    <div class="project-meta" style="color: var(--accent);">App Design · 2026
+                        <!-- <span style="
+    display: inline-block; 
+    padding: 2px 10px; 
+    font-size: 11px; 
+    font-weight: 700; 
+    color: #000000; 
+    background-color: var(--accent); 
+    border-radius: 50px; 
+    text-transform: uppercase;
+    line-height: 1.5;
+">
+                            Coming Soon
+                        </span> -->
+                    </div>
+                    <div class="project-meta" style="margin-top: 10px;">
+                        A music app UI/UX design project created using Figma, focusing on providing an intuitive and
+                        visually appealing user experience for music lovers. The design incorporates features such as
+                        personalized playlists, easy navigation, and engaging visuals to enhance the overall music
+                        listening experience.
+                    </div>
+                </div>
+                <div class="project-arrow">→</div>
+            </a>
+            <a href="https://www.figma.com/design/pQztQYj6laRjuZLlIznepR/%F0%9F%8D%95-June-Design-Challenge--Design-the-Skill-Tree-of-Howard?node-id=197-1005&t=oGeGMYxsFMusxsEE-1"
+                class="project-item reveal" style="transition-delay:0.3s">
+                <div class="project-num">11 —</div>
+                <div>
+                    <div class="project-name">Design The Skill Tree of Howard - Design Challenge</div>
+                    <div class="project-meta" style="color: var(--accent);">UI Design · 2026
+                        <!-- <span style="
+    display: inline-block; 
+    padding: 2px 10px; 
+    font-size: 11px; 
+    font-weight: 700; 
+    color: #000000; 
+    background-color: var(--accent); 
+    border-radius: 50px; 
+    text-transform: uppercase;
+    line-height: 1.5;
+">
+                            Coming Soon
+                        </span> -->
+                    </div>
+                    <div class="project-meta" style="margin-top: 10px;">
+                        Create a skill tree design for the character Howard, focusing on providing a clear and visually
+                        appealing representation of the character's abilities and progression. The design should be easy
+                        to understand and navigate, allowing players to easily track their progress and make informed
+                        decisions about their character's development.
                     </div>
                 </div>
                 <div class="project-arrow">→</div>
             </a>
         </div>
+    </section>
+
+    <section id="testimonials">
+        <!-- <div class="section-label">Testimonials</div> -->
+        <div class="testimonials-container">
+            <!-- Sisi Kiri: Judul Statis sesuai gambar referensi -->
+            <div class="testimonials-left reveal-element">
+                <div class="section-label">Testimonials</div>
+                <h2 class="testimonials-heading">What are they saying about me?</h2>
+
+                <!-- Tombol Navigasi Kustom Gaya Brutalist -->
+                <div class="slider-nav">
+                    <button class="nav-btn prev-slide">←</button>
+                    <div class="nav-indicator"><span class="nav-progress"></span></div>
+                    <button class="nav-btn next-slide">→</button>
+                </div>
+            </div>
+
+            <!-- Sisi Kanan: Slider Track yang bisa di-drag / scroll horizontal -->
+            <div class="testimonials-right">
+                <div class="testimonial-track">
+
+                    <!-- Card 1 -->
+                    <div class="testimonial-card reveal-element">
+                        <div class="review-box">
+                            <p>"He can work and can be relied on in terms of his work, exceeding my expectations,
+                                especially he is very detailed in terms of design, even though he is still young, his
+                                talent is already extraordinary."</p>
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="reviewer-info">
+                            <img src="https://cdn.discordapp.com/avatars/233399041478754314/35757ebbb3c36b10f20e731dabec625d.webp?size=80"
+                                alt="Karan" class="reviewer-avatar">
+                            <div class="reviewer-details">
+                                <span class="reviewer-name">Makura<p class="reviewer-country">United States</p></span>
+                                <span class="review-date">47 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="testimonial-card reveal-element">
+                        <div class="review-box">
+                            <p>"He graphic poster designs are really great and beautiful, and he's talented in that area
+                                as well. He pays close attention to detail in his designs—in particular, he once showed
+                                me one of his projects: a character poster for the game Honkai Star Rail."</p>
+                            <div class="review-stars">⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="reviewer-info">
+                            <img src="https://cdn.discordapp.com/avatars/1262981351926140938/3dd0cc2f50c0c9e87f92426498296cdd.webp?size=80"
+                                alt="Catherine" class="reviewer-avatar">
+                            <div class="reviewer-details">
+                                <span class="reviewer-name">Aboe<p class="reviewer-country">Indonesian</p></span>
+                                <span class="review-date">44 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="testimonial-card reveal-element">
+                        <div class="review-box">
+                            <p>"He’s very good at coming up with unique design concepts and pays close attention to
+                                every detail, especially in game UI. He’s also highly skilled at creating animations
+                                using Figma."</p>
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="reviewer-info">
+                            <img src="https://cdn.discordapp.com/avatars/747777681436704891/6fc9ff5d34b5afc7cabe8d418abd2e7d.webp?size=80"
+                                alt="Peter" class="reviewer-avatar">
+                            <div class="reviewer-details">
+                                <span class="reviewer-name">Shai<p class="reviewer-country">Design Community</p></span>
+                                <span class="review-date">1 month ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="testimonial-card reveal-element">
+                        <div class="review-box">
+                            <p>"He has a bright future ahead of him; I like some of his design posts on Instagram."</p>
+                            <div class="review-stars">⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="reviewer-info">
+                            <img src="Mine UX Design.jpg" alt="Peter" class="reviewer-avatar">
+                            <div class="reviewer-details">
+                                <span class="reviewer-name">Mine<p class="reviewer-country">Germany</p></span>
+                                <span class="review-date">1 years ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="testimonial-card reveal-element">
+                        <div class="review-box">
+                            <p>"He helped me deal with the design issues I’d been facing, and he was very reliable. He always explained each step one by one, which made it easy for me to understand, and that’s how my problems were resolved. "</p>
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="reviewer-info">
+                            <img src="https://cdn.discordapp.com/avatars/630504135795671058/a_dc4e5c2f0ed5e340dedbc6fba517dafd.webp?size=60" alt="Peter" class="reviewer-avatar">
+                            <div class="reviewer-details">
+                                <span class="reviewer-name">Dana<p class="reviewer-country">Germany</p></span>
+                                <span class="review-date">37 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work-experience">
+        <div class="experience-container">
+            <div class="experience-header reveal-element">
+                <div class="section-label">The Journey So Far</div>
+            </div>
+
+            <div class="experience-timeline">
+
+                <div class="experience-item reveal-element">
+                    <div class="exp-logo-zone">
+                        <div class="exp-logo-box">
+                            <span class="logo-fallback"></span>
+                        </div>
+                        <div class="timeline-line"></div>
+                    </div>
+
+                    <div class="exp-details">
+                        <div class="exp-meta-header">
+                            <h3 class="exp-role">Information Technology Help Desk Support</h3>
+                            <span class="exp-duration">Jul 2025 - Dec 2025 · 6 mos</span>
+                        </div>
+
+                        <div class="exp-company-location">
+                            <span class="company-name">WISECON (Wisesa Consulting Indonesia)</span>
+                            <span class="bullet-sep">·</span>
+                            <span class="exp-type">Internship</span>
+                            <span class="bullet-sep">·</span>
+                            <span class="exp-location">Central Jakarta, Jakarta, Indonesia · On-site</span>
+                        </div>
+
+                        <ul class="exp-bullets">
+                            <li>Monitoring IT Support helpdesk</li>
+                            <li>OS installation until laptop and PC maintenance</li>
+                            <li>Monitored network performance</li>
+                            <li>Attend routine weekly IT meetings</li>
+                        </ul>
+                        <div class="exp-action">
+                            <a href="https://drive.google.com/drive/folders/1EYzRDQmNeNeX2IxF55OXkajCZQTNGZ1h?usp=sharing"
+                                target="_blank" class="btn-doc">
+                                View Internship Document
+                                <span class="btn-arrow">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="experience-timeline">
+
+                <div class="experience-item reveal-element">
+                    <div class="exp-logo-zone">
+                        <div class="exp-logo-box-1">
+                            <!-- <span class="logo-fallback"></span> -->
+                        </div>
+                        <div class="timeline-line"></div>
+                    </div>
+
+                    <div class="exp-details">
+                        <div class="exp-meta-header">
+                            <h3 class="exp-role">Kickstarter Campaign Design - Arc Spirits Game</h3>
+                            <span class="exp-duration">May 2026 - Present</span>
+                        </div>
+
+                        <div class="exp-company-location">
+                            <span class="company-name">Project Collaboration</span>
+                            <span class="bullet-sep">·</span>
+                            <span class="exp-type">Project-Based</span>
+                            <span class="bullet-sep">·</span>
+                            <span class="exp-location">Jakarta, Indonesia · Remote</span>
+                        </div>
+
+                        <ul class="exp-bullets">
+                            <li>Designed an informational Kickstarter game banner with a cozy, minimalist aesthetic
+                                tailored to the game’s theme.</li>
+                            <li>Created multiple logo variations and a comprehensive brand kit tailored to the game's identity.</li>
+                            <li>Developed design layouts for the character showcase, product box cover, rulebook, and
+                                player mat.</li>
+                        </ul>
+                        <div class="exp-action">
+                            <a href="#work-experience"
+                                class="btn-doc">
+                                View Project
+                                <span class="btn-arrow">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </section>
 
     <section id="contact">
@@ -916,11 +1731,11 @@
             <a href="https://www.instagram.com/mhmdsaaa_?igsh=N3A2bTNxOWVwMWNt" class="contact-link">Instagram</a>
             <a href="https://www.threads.com/@mhmdsaaa_" class="contact-link">Thread</a>
         </div>
-    </section> -->
+    </section>
 
     <footer>
         <span>© 2026 Muhammad Isa. All rights reserved.</span>
-        <span>Built with HTML · CSS · JS</span>
+        <span>I'm From Indonesia</span>
     </footer>
 
     <script>
@@ -961,10 +1776,109 @@
         }, { threshold: 0.5 });
         document.querySelectorAll('[data-count]').forEach(el => countObs.observe(el));
 
+        const track = document.querySelector('.testimonial-track');
+        const container = document.querySelector('.testimonials-right');
+        const cards = document.querySelectorAll('.testimonial-card');
+        const prevBtn = document.querySelector('.prev-slide');
+        const nextBtn = document.querySelector('.next-slide');
+        const progress = document.querySelector('.nav-progress');
+
+        let currentIndex = 0;
+        let isDragging = false;
+        let startX, scrollLeft;
+        let maxIndex = cards.length - 1;
+
+        // Fungsi hitung pergeseran & update indikator line
+        function updateSlider() {
+            // Menghitung jarak geser otomatis berdasarkan lebar card + gap (30px)
+            const cardWidth = cards[0].offsetWidth + 30;
+            track.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+
+            // Update posisi garis indikator hijau
+            if (progress) {
+                progress.style.left = `${(currentIndex / cards.length) * 100}%`;
+            }
+        }
+
+        // Event Tombol
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < maxIndex) currentIndex++;
+            else currentIndex = 0; // Loop balik ke awal
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) currentIndex--;
+            else currentIndex = maxIndex; // Loop ke paling akhir
+            updateSlider();
+        });
+
+        // Fitur Interaksi Drag Mouse / Trackpad Swipe
+        container.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX - track.offsetLeft;
+            scrollLeft = currentIndex;
+            track.style.transition = 'none'; // Matikan transisi pas ditarik biar responsif
+        });
+
+        container.addEventListener('mouseleave', () => { isDragging = false; });
+        container.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            track.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
+
+            const endX = e.pageX - track.offsetLeft;
+            const distance = startX - endX;
+
+            // Jika diswipe sejauh lebih dari 50px, pindah slide
+            if (distance > 50 && currentIndex < maxIndex) {
+                currentIndex++;
+            } else if (distance < -50 && currentIndex > 0) {
+                currentIndex--;
+            }
+            updateSlider();
+        });
+
+        container.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - track.offsetLeft;
+            const walk = (x - startX) * 0.5; // Faktor kelembutan drag
+            const cardWidth = cards[0].offsetWidth + 30;
+            track.style.transform = `translateX(${-scrollLeft * cardWidth + walk}px)`;
+        });
+
+        // Otomatis kalkulasi ulang kalau layar diresize
+        window.addEventListener('resize', updateSlider);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const revealElements = document.querySelectorAll('.reveal-element');
+
+            const observerOptions = {
+                root: null, // Menggunakan viewport layar browser
+                rootMargin: '0px',
+                threshold: 0.15 // Animasi jalan kalau 15% bagian elemen sudah masuk layar
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Unobserve kalau lo mau animasinya cuma jalan sekali pas di-scroll
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            revealElements.forEach(element => {
+                revealObserver.observe(element);
+            });
+        });
+
         // Matikan Klik Kanan
         document.addEventListener('contextmenu', event => event.preventDefault());
 
-        // Matikan Shortcut Copy (Ctrl+C atau Cmd+C)
+        Matikan Shortcut Copy (Ctrl+C atau Cmd+C)
         document.addEventListener('keydown', e => {
             if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'a')) {
                 e.preventDefault();
@@ -978,8 +1892,8 @@
                 window.outerHeight - window.innerHeight > threshold;
             if (isDevToolsOpen) {
                 alert('Please close it to continue browsing.');
-                // Atau redirect ke halaman login lagi
-                // window.location.href = 'portfolio.html';
+                 // Atau redirect ke halaman login lagi
+                 // window.location.href = 'portfolio.html';
             }
         }, 1000);
 
@@ -994,3 +1908,13 @@
 </body>
 
 </html>
+
+
+<!-- Note : 
+1. Hover nya tambahkan buat project (showcase image)
+2. Testimonial
+3. Work Experience
+4. Based on Indonesia 
+5. what i learned in project
+6. Tambahkan bukti surat magang di wisesa
+-->
